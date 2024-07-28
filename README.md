@@ -59,60 +59,15 @@ To set up the project locally, follow these steps:
 
 2. **Set Up the Database**:
     - Create a MySQL database named `TransitionP`.
-    - Import the provided `transitionp.sql` file to set up the necessary tables:
-      ```sql
-      CREATE TABLE users (
-          id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-          username VARCHAR(30) NOT NULL,
-          email VARCHAR(50),
-          password VARCHAR(255) NOT NULL,
-          role VARCHAR(10) NOT NULL
-      );
-      INSERT INTO users (username, email, password, role) VALUES ('admin', 'admin@example.com', '$2y$10$examplehashedpassword', 'admin');
-      ```
+    - Import the provided `transitionp.sql` file to set up the necessary tables.
 
-3. **Configure Database Connection**:
-    - Update the database connection settings in `config.php`:
-    ```php
-    <?php
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "TransitionP";
-    ?>
-    ```
+3. **Configure Database Connection**
 
 4. **Run the Application**:
-    - Start a local PHP server from the root of the project:
-    ```bash
-    php -S localhost:8000
-    ```
-    - Open your web browser and navigate to `http://localhost:8000`.
-
+ 
 ## Usage
 - **Login**:
-  - Access the login page at `http://localhost:8000/login.php`.
-  - Enter your email and password to log in.
+  - Access the login page at http:
 
-- **User Management**:
-  - Admins can access the user management page at `http://localhost:8000/manage_users.php`.
-  - Admins can accept, reject, or delete users from this page.
 
-## Contributing
-We welcome contributions to improve TransitionPlus! To contribute, follow these steps:
-
-1. Fork the repository.
-2. Create a new branch for your feature or bug fix:
-    ```bash
-    git checkout -b feature-name
-    ```
-3. Commit your changes:
-    ```bash
-    git commit -m "Add some feature"
-    ```
-4. Push to the branch:
-    ```bash
-    git push origin feature-name
-    ```
-5. Open a pull request on GitHub.
 
