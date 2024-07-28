@@ -67,7 +67,4 @@ To set up the project locally, follow these steps:
  
 ## Usage
 - **Login**:
-  - Access the login page at http:
-
-
-
+  - Access the login page at http://transitionplus.infinityfreeapp.com/
