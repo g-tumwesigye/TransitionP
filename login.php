@@ -66,63 +66,91 @@ $conn->close();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Login | TransitionPlus</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"> <!-- FontAwesome -->
     <style>
-        .form-container {
-            margin-top: 50px;
+        body {
+            background: linear-gradient(135deg, #74ebd5 0%, #ACB6E5 100%);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card {
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            width: 100%;
+            max-width: 400px;
         }
 
         .form-title {
-            margin-bottom: 30px;
+            margin-bottom: 20px;
+            font-size: 2rem;
+            color: #333;
         }
 
-        .role-selector, .form-mode-selector {
-            margin-bottom: 30px;
+        .form-group label {
+            font-weight: bold;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #004085;
+        }
+
+        .form-control {
+            border-radius: 10px;
+        }
+
+        .form-control:focus {
+            box-shadow: none;
+            border-color: #007bff;
+        }
+
+        .alert {
+            display: none;
         }
     </style>
 </head>
 <body>
-<div class="container form-container">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <h2 class="text-center form-title">Login</h2>
-            <div class="alert alert-info text-center"></div>
-            <form id="userForm" method="POST" action="login.php">
-                <div class="form-group">
-                    <label for="formMode">I want to:</label>
-                    <select class="form-control form-mode-selector" id="formMode" name="formMode">
-                        <option value="login">Login</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="role">I am a:</label>
-                    <select class="form-control role-selector" id="role" name="role">
-                        <option value="student">Student</option>
-                        <option value="mentor">Mentor</option>
-                        <option value="admin">Admin</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email address</label>
-                    <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
-                </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required>
-                </div>
-                <div id="confirm-password-group" class="form-group" style="display: none;">
-                    <label for="confirm-password">Confirm Password</label>
-                    <input type="password" class="form-control" id="confirm-password" name="confirmPassword" placeholder="Confirm your password">
-                </div>
-                <div class="form-group text-center">
-                    <button type="submit" class="btn btn-primary btn-block" id="formSubmit">Login</button>
-                    <a href="index.php" class="btn btn-secondary btn-block">Back</a>
-                </div>
-            </form>
+<div class="card">
+    <h2 class="text-center form-title">Login</h2>
+    <div class="alert alert-info text-center"></div>
+    <form id="userForm" method="POST" action="login.php">
+        <div class="form-group">
+            <label for="role">I am a:</label>
+            <select class="form-control" id="role" name="role">
+                <option value="student">Student</option>
+                <option value="mentor">Mentor</option>
+                <option value="admin">Admin</option>
+            </select>
         </div>
-    </div>
+        <div class="form-group">
+            <label for="email">Email address</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required>
+        </div>
+        <div id="confirm-password-group" class="form-group" style="display: none;">
+            <label for="confirm-password">Confirm Password</label>
+            <input type="password" class="form-control" id="confirm-password" name="confirmPassword" placeholder="Confirm your password">
+        </div>
+        <div class="form-group text-center">
+            <button type="submit" class="btn btn-primary btn-block" id="formSubmit">Login</button>
+            <a href="index.php" class="btn btn-secondary btn-block">Back</a>
+        </div>
+    </form>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
