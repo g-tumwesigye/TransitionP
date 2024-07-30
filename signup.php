@@ -3,10 +3,10 @@
 session_start();
 
 // Database configuration
-$servername = "localhost"; // Replace with your server details
-$username = "root"; // Replace with your database username
-$password = ""; // Replace with your database password
-$dbname = "TransitionP"; // Your database name
+$servername = "sql108.infinityfree.com"; // Replace with your server details
+$username = "if0_36973131"; // Replace with your database username
+$password = "9reHr7jPZ59v"; // Replace with your database password
+$dbname = "if0_36973131_trans"; // Your database name
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -121,3 +121,4 @@ $conn->close();
 <script src="https://kit.fontawesome.com/a076d05399.js"></script> <!-- For FontAwesome Icons -->
 </body>
 </html>
+

@@ -81,7 +81,6 @@
   </div>
 </nav>
 
-
   <!-- Sidebar -->
   <div class="sidebar">
     <a href="#">Dashboard</a>
@@ -98,67 +97,76 @@
       <h1 class="text-center mb-4">Admin Dashboard</h1>
 
       <?php
-// Database connection
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "TransitionP";
+      // Database connection
+      $servername = "sql108.infinityfree.com";
+      $username = "if0_36973131";
+      $password = "9reHr7jPZ59v";
+      $dbname = "if0_36973131_trans";
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
+      // Create connection
+      $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+      // Check connection
+      if ($conn->connect_error) {
+          die("Connection failed: " . $conn->connect_error);
+      }
 
-// Fetch users data
-$sql = "SELECT username, role FROM users";
-$result = $conn->query($sql);
-?>
+      // Check if delete request is sent
+      if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['delete_user'])) {
+          $username_to_delete = $_POST['username'];
+          $delete_sql = "DELETE FROM users WHERE username='$username_to_delete'";
+          if ($conn->query($delete_sql) === TRUE) {
+              echo "<div class='alert alert-success'>User deleted successfully.</div>";
+          } else {
+              echo "<div class='alert alert-danger'>Error deleting user: " . $conn->error . "</div>";
+          }
+      }
 
-
+      // Fetch users data
+      $sql = "SELECT username, role FROM users";
+      $result = $conn->query($sql);
+      ?>
 
       <!-- User Management Section -->
       <div class="container mt-5">
-    <section id="user-management">
-        <h2 class="mb-3">Manage Users</h2>
-        <div class="table-responsive mb-5">
-          <table class="table table-bordered">
-            <thead class="thead-dark">
-              <tr>
-                <th scope="col">User Name</th>
-                <th scope="col">Role</th>
-                <th scope="col">Actions</th>
-              </tr>
-            </thead>
-            <tbody id="user-table-body">
-            <?php
-            if ($result->num_rows > 0) {
-                // Output data of each row
-                while($row = $result->fetch_assoc()) {
-                    echo "<tr>
-                            <td>" . htmlspecialchars($row['username']) . "</td>
-                            <td>" . htmlspecialchars($row['role']) . "</td>
-                            <td>
-                                <button class='btn btn-success btn-sm action-btn'>Accept</button>
-                                <button class='btn btn-danger btn-sm action-btn'>Reject</button>
-                                <button class='btn btn-warning btn-sm action-btn'>Delete</button>
-                            </td>
-                          </tr>";
-                }
-            } else {
-                echo "<tr><td colspan='3'>No users found</td></tr>";
-            }
-            $conn->close();
-            ?>
-            </tbody>
-          </table>
-        </div>
-      </section>
-</div>
-
-
+        <section id="user-management">
+          <h2 class="mb-3">Manage Users</h2>
+          <div class="table-responsive mb-5">
+            <table class="table table-bordered">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">User Name</th>
+                  <th scope="col">Role</th>
+                  <th scope="col">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="user-table-body">
+              <?php
+              if ($result->num_rows > 0) {
+                  // Output data of each row
+                  while($row = $result->fetch_assoc()) {
+                      echo "<tr>
+                              <td>" . htmlspecialchars($row['username']) . "</td>
+                              <td>" . htmlspecialchars($row['role']) . "</td>
+                              <td>
+                                  <form method='POST' action=''>
+                                      <input type='hidden' name='username' value='" . htmlspecialchars($row['username']) . "'>
+                                      <button type='submit' name='delete_user' class='btn btn-danger btn-sm'>Delete</button>
+                                       
+                                  </form>
+                              </td>
+                            </tr>";
+                  }
+              } else {
+                  echo "<tr><td colspan='3'>No users found</td></tr>";
+              }
+              $conn->close();
+              ?>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </div>
 
       <!-- Content Moderation Section -->
       <section id="content-moderation">
@@ -216,46 +224,12 @@ $result = $conn->query($sql);
           </div>
         </div>
       </section>
-
     </div>
   </div>
 
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  <script>
-    $(document).ready(function() {
-      // Common action handler for users and content
-      $('.action-btn').click(function() {
-        var action = $(this).text().trim().toLowerCase();
-        var itemId = $(this).closest('tr').attr('id');
-        switch (action) {
-          case 'accept':
-            alert('Accepted ' + action + ' for item ID: ' + itemId);
-            // Implement accept logic here
-            break;
-          case 'reject':
-            alert('Rejected ' + action + ' for item ID: ' + itemId);
-            // Implement reject logic here
-            break;
-          case 'delete':
-            alert('Deleted item ID: ' + itemId);
-            $(this).closest('tr').remove(); // Remove from UI
-            // Implement delete logic here
-            break;
-          case 'approve':
-            alert('Approved ' + action + ' for item ID: ' + itemId);
-            // Implement approve logic here
-            break;
-          case 'edit':
-            alert('Editing item ID: ' + itemId);
-            // Implement edit logic here
-            break;
-          default:
-            break;
-        }
-      });
-    });
-  </script>
 </body>
 </html>
+

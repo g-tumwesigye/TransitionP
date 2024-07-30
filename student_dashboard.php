@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,94 +5,123 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Student Dashboard</title>
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"> <!-- FontAwesome for icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      background-color: #f4f6f9;
+    }
+    .navbar {
+      background-color: #343a40;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .navbar-brand {
+      font-size: 1.5rem;
+      font-weight: bold;
     }
     .sidebar {
       height: 100vh;
-      width: 200px;
+      width: 250px;
       position: fixed;
-      background-color: #343a40;
+      background: linear-gradient(180deg, #007bff 0%, #6610f2 100%);
       padding-top: 20px;
       color: white;
+      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
     }
     .sidebar a {
       color: white;
       display: block;
-      padding: 10px;
+      padding: 15px;
       text-decoration: none;
-      font-size: 14px;
+      font-size: 16px;
+      transition: background 0.3s;
     }
     .sidebar a:hover {
-      background-color: #495057;
+      background-color: #6c757d;
       text-decoration: none;
     }
     .content {
-      margin-left: 220px;
+      margin-left: 270px;
       padding: 20px;
+      background-color: #f4f6f9;
+      min-height: 100vh;
     }
     .notification {
-      background-color: #f8d7da;
-      border-color: #f5c6cb;
-      color: #721c24;
+      background-color: #ffdd57;
+      border-color: #ffca28;
+      color: #856404;
       padding: 15px;
       margin-bottom: 20px;
       border: 1px solid transparent;
       border-radius: .25rem;
       display: flex;
       align-items: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
     .notification .fa-bell {
       margin-right: 10px;
+    }
+    .card {
+      border: none;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    .card-title {
+      font-weight: bold;
+      font-size: 1.25rem;
+    }
+    .btn-primary {
+      background: linear-gradient(90deg, #007bff 0%, #6610f2 100%);
+      border: none;
+    }
+    .btn-primary:hover {
+      background: linear-gradient(90deg, #6610f2 0%, #007bff 100%);
+    }
+    .text-muted {
+      color: #6c757d !important;
     }
   </style>
 </head>
 <body>
   <!-- Navigation Bar -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">Student Dashboard</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav ml-auto">
-      <li class="nav-item">
-        <a class="nav-link" href="index.php">Home</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#"></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#"><i class="fas fa-bell"></i> Notifications</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#"></a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Settings
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Account Settings</a>
-          <a class="dropdown-item" href="#">Privacy Settings</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Security</a>
-        </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="login.php">Logout</a>
-      </li>
-    </ul>
-  </div>
-</nav>
-
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Student Dashboard</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="index.php">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#"><i class="fas fa-bell"></i> Notifications</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Settings
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">Account Settings</a>
+            <a class="dropdown-item" href="#">Privacy Settings</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Security</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="login.php">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
 
   <!-- Sidebar -->
   <div class="sidebar">
     <a href="#">Dashboard</a>
-    <a href="#">Scholarships</a>
+    <a href="#">Scholarship Opportunities</a>
     <a href="#">Mentorship Opportunities</a>
     <a href="#">Courses</a>
     <a href="#">Settings</a>
@@ -108,15 +136,15 @@
         <strong>New Notification!</strong> You have new notifications.
       </div>
 
-      <h1 class="text-center mb-4">Scholarship Listings</h1>
+      <h1 class="text-center mb-4">Scholarship Opportunities</h1>
       <div class="row">
         <!-- Scholarship 1 -->
         <div class="col-md-4">
           <div class="card mb-4">
             <div class="card-body">
-              <h5 class="card-title">Scholarship Name 1</h5>
-              <p class="card-text">Brief description of the scholarship. This scholarship is available for students who...</p>
-              <p class="card-text"><small class="text-muted">Deadline: June 30, 2024</small></p>
+              <h5 class="card-title">Merit-Based Excellence Scholarship</h5>
+              <p class="card-text">This scholarship recognizes outstanding academic achievement and is awarded to students who have demonstrated exceptional performance in their studies. It is open to high school students with a strong academic record and a commitment to academic excellence.</p>
+              <p class="card-text"><small class="text-muted">Deadline: August 20, 2024</small></p>
               <a href="#" class="btn btn-primary">Read More</a>
             </div>
           </div>
@@ -125,9 +153,9 @@
         <div class="col-md-4">
           <div class="card mb-4">
             <div class="card-body">
-              <h5 class="card-title">Scholarship Name 2</h5>
-              <p class="card-text">Brief description of the scholarship. This scholarship is available for students who...</p>
-              <p class="card-text"><small class="text-muted">Deadline: July 15, 2024</small></p>
+              <h5 class="card-title">Future Leaders Scholarship</h5>
+              <p class="card-text">Designed to support students who exhibit strong leadership potential and a passion for making a positive impact in their communities. Applicants should have a track record of leadership and community involvement.</p>
+              <p class="card-text"><small class="text-muted">Deadline: September 15, 2024</small></p>
               <a href="#" class="btn btn-primary">Read More</a>
             </div>
           </div>
@@ -136,9 +164,9 @@
         <div class="col-md-4">
           <div class="card mb-4">
             <div class="card-body">
-              <h5 class="card-title">Scholarship Name 3</h5>
-              <p class="card-text">Brief description of the scholarship. This scholarship is available for students who...</p>
-              <p class="card-text"><small class="text-muted">Deadline: August 1, 2024</small></p>
+              <h5 class="card-title">Academic Achievement Award</h5>
+              <p class="card-text">This award is given to students who have achieved exceptional academic results and have shown dedication to their educational pursuits. It aims to support students who consistently excel in their studies.</p>
+              <p class="card-text"><small class="text-muted">Deadline: September 1, 2024</small></p>
               <a href="#" class="btn btn-primary">Read More</a>
             </div>
           </div>
@@ -151,9 +179,9 @@
         <div class="col-md-4">
           <div class="card mb-4">
             <div class="card-body">
-              <h5 class="card-title">Mentorship Program 1</h5>
-              <p class="card-text">Brief description of the mentorship program. This program is available for students who...</p>
-              <p class="card-text"><small class="text-muted">Start Date: July 1, 2024</small></p>
+              <h5 class="card-title">Leadership Development Mentorship</h5>
+              <p class="card-text">This program is designed to cultivate leadership skills in students through one-on-one mentoring with experienced leaders. Participants will engage in activities that enhance their leadership capabilities and prepare them for future roles.</p>
+              <p class="card-text"><small class="text-muted">Start Date: September 1, 2024</small></p>
               <a href="#" class="btn btn-primary">Read More</a>
             </div>
           </div>
@@ -162,8 +190,8 @@
         <div class="col-md-4">
           <div class="card mb-4">
             <div class="card-body">
-              <h5 class="card-title">Mentorship Program 2</h5>
-              <p class="card-text">Brief description of the mentorship program. This program is available for students who...</p>
+              <h5 class="card-title">Entrepreneurship and Innovation Mentorship</h5>
+              <p class="card-text">Targeted at aspiring entrepreneurs, this program offers mentorship from successful entrepreneurs and business leaders. It includes guidance on starting a business, innovative thinking, and strategic planning to help students turn their business ideas into reality.</p>
               <p class="card-text"><small class="text-muted">Start Date: August 15, 2024</small></p>
               <a href="#" class="btn btn-primary">Read More</a>
             </div>
@@ -173,33 +201,10 @@
         <div class="col-md-4">
           <div class="card mb-4">
             <div class="card-body">
-              <h5 class="card-title">Mentorship Program 3</h5>
-              <p class="card-text">Brief description of the mentorship program. This program is available for students who...</p>
+              <h5 class="card-title">Career Guidance Program</h5>
+              <p class="card-text">This mentorship program focuses on guiding students. Mentors, who are professionals in diffrent fields, provide advice on career paths, skill development, and job market trends. This program aims to help students navigate their future careers.</p>
               <p class="card-text"><small class="text-muted">Start Date: September 1, 2024</small></p>
               <a href="#" class="btn btn-primary">Read More</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <h1 class="text-center mb-4 mt-5">Other Information</h1>
-      <div class="row">
-        <!-- Additional information -->
-        <div class="col-md-12">
-          <div class="card mb-4">
-            <div class="card-body">
-              <h5 class="card-title">Courses</h5>
-              <p class="card-text">Details about courses you can enroll in...</p>
-              <a href="#" class="btn btn-primary">View Courses</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-12">
-          <div class="card mb-4">
-            <div class="card-body">
-              <h5 class="card-title"></h5>
-              <p class="card-text">Manage your account settings...</p>
-              <a href="#" class="btn btn-primary">Go to Settings</a>
             </div>
           </div>
         </div>
@@ -212,3 +217,4 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
+
