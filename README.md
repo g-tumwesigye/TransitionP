@@ -30,7 +30,12 @@ Administrators
 Educational institutions
 Parents/Guardians
 Technical Overview
-TransitionPlus is developed using the Laravel PHP framework and the Bootstrap front-end framework. It is designed to be accessible via web browsers and mobile devices, ensuring compatibility across various platforms and devices.
+
+Technologies, tools, and database
+Frontend: HTML, CSS, Bootstrap, JavaScript
+Backend: PHP
+Database: MySQL
+Version Control: Git
 
 
 Installation
