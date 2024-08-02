@@ -24,7 +24,7 @@
       margin-bottom: 1rem;
     }
     .login-link {
-      color: #ff5733 !important;
+      color: #dc143c  !important;
     }
   </style>
 </head>
@@ -388,7 +388,12 @@
 <footer class="bg-light py-4 mt-5 text-center">
   <div class="container">
     <p class="copyright-text">
-      &copy; 2024 <span class="footer-name">Geofrey Tumwesigye</span> and <span class="footer-company">TransitionPlus</span>. All rights reserved.
+      &copy; 2024 <span class="footer-company">TransitionPlus</span>. All rights reserved.
+
+    <p>
+    Developed by Geofrey Tumwesigye
+    </p>
+
     </p>
   </div>
 </footer>
@@ -425,4 +430,3 @@
   <script src="https://kit.fontawesome.com/a076d05399.js"></script> <!-- For FontAwesome Icons -->
 </body>
 </html>
-

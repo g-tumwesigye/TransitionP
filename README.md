@@ -64,7 +64,5 @@ To set up the project locally, follow these steps:
 3. **Configure Database Connection**
 
 4. **Run the Application**:
- 
-## Usage
-- **Login**:
-  - Access the login page at http://transitionplus.infinityfreeapp.com/
+
+  - Access the TransitionPlus platform  at https://transitionplus.infinityfreeapp.com/

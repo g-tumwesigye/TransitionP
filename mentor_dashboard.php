@@ -1,3 +1,18 @@
+<?php
+session_start();
+
+// Check if the user is authenticated
+if (!isset($_SESSION['authenticated']) || $_SESSION['authenticated'] !== true) {
+    header('Location: login.php');
+    exit();
+}
+
+// Prevent caching
+header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+header("Cache-Control: post-check=0, pre-check=0", false);
+header("Pragma: no-cache");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,32 +28,43 @@
     }
     .navbar {
       background: linear-gradient(90deg, #4b6cb7, #182848);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
     .sidebar {
       height: 100vh;
-      width: 220px;
+      width: 240px;
       position: fixed;
-      background-color: #2c3e50;
+      background: #343a40;
       padding-top: 20px;
       color: white;
+      transition: width 0.3s;
     }
     .sidebar a {
       color: white;
       display: block;
-      padding: 15px 10px;
+      padding: 15px 20px;
       text-decoration: none;
       font-size: 16px;
+      transition: background 0.3s;
     }
     .sidebar a:hover {
-      background-color: #34495e;
+      background: #495057;
       text-decoration: none;
     }
+    .sidebar .sidebar-header {
+      font-size: 1.5rem;
+      text-align: center;
+      padding: 10px 0;
+      margin-bottom: 1rem;
+      background: #495057;
+    }
     .content {
-      margin-left: 240px;
+      margin-left: 260px;
       padding: 20px;
+      transition: margin-left 0.3s;
     }
     .notification {
-      background-color: #f8d7da;
+      background: #f8d7da;
       border-color: #f5c6cb;
       color: #721c24;
       padding: 15px;
@@ -52,14 +78,15 @@
       margin-right: 10px;
     }
     .card-custom {
-      height: 300px; /* Adjust this height as needed */
+      height: 300px;
       border: none;
       border-radius: 15px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s;
+      transition: transform 0.3s, box-shadow 0.3s;
     }
     .card-custom:hover {
       transform: translateY(-10px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     }
     .card-body-custom {
       display: flex;
@@ -73,6 +100,16 @@
     .form-control {
       border-radius: 20px;
     }
+    @media (max-width: 768px) {
+      .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+      }
+      .content {
+        margin-left: 0;
+      }
+    }
   </style>
 </head>
 <body>
@@ -85,7 +122,7 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav ml-auto">
       <li class="nav-item">
-        <a class="nav-link" href="#">Home</a>
+        <a class="nav-link" href="index.php">Home</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">About</a>
@@ -116,6 +153,7 @@
 
 <!-- Sidebar -->
 <div class="sidebar">
+  <div class="sidebar-header">Menu</div>
   <a href="#">Dashboard</a>
   <a href="#">Engage with Students</a>
   <a href="#">Communicate with Mentors</a>
@@ -188,10 +226,9 @@
       <div class="col-md-4 guidance-card" data-field="science">
         <div class="card card-custom mb-4">
           <div class="card-body card-body-custom">
-            <h5 class="card-title">Guidance Topic 1</h5>
-            <p class="card-text">Brief description of the guidance topic...</p>
-            <a href="#" class="btn btn-primary">Read More</a>
-            <a href="#" class="btn btn-secondary mt-2">Post New Guidance</a>
+            <h5 class="card-title">Guidance Title 1</h5>
+            <p class="card-text">Details about the guidance provided...</p>
+            <a href="#" class="btn btn-primary">View Details</a>
           </div>
         </div>
       </div>
@@ -201,8 +238,28 @@
 </div>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+  // Filter functionality for student and mentor cards
+  document.getElementById('fieldSelect').addEventListener('change', function() {
+    var field = this.value;
+    filterCards('student-card', field);
+    filterCards('mentor-card', field);
+    filterCards('guidance-card', field);
+  });
+
+  function filterCards(className, field) {
+    var cards = document.querySelectorAll('.' + className);
+    cards.forEach(function(card) {
+      if (field === 'all' || card.getAttribute('data-field') === field) {
+        card.style.display = 'block';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+</script>
 </body>
 </html>
 

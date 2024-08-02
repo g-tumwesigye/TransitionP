@@ -66,53 +66,80 @@ $conn->close();
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"> <!-- FontAwesome -->
     <style>
+        body {
+            background: linear-gradient(135deg, #74ebd5 0%, #ACB6E5 100%);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
         .form-container {
-            margin-top: 50px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 30px;
+            max-width: 400px;
+            margin: auto;
         }
-
         .form-title {
-            margin-bottom: 30px;
+            margin-bottom: 20px;
+            color: #333;
         }
-
-        .role-selector, .form-mode-selector {
-            margin-bottom: 30px;
+        .form-control, .form-select {
+            border-radius: 8px;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.12);
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+            border-radius: 8px;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+        .btn-secondary {
+            background-color: #6c757d;
+            border: none;
+            border-radius: 8px;
+        }
+        .btn-secondary:hover {
+            background-color: #5a6268;
+        }
+        .alert {
+            display: none;
         }
     </style>
 </head>
 <body>
 <div class="container form-container">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <h2 class="text-center form-title">Signup</h2>
-            <div class="alert alert-info text-center"></div>
-            <form id="userForm" method="POST" action="signup.php">
-                <div class="form-group">
-                    <label for="role">I am a:</label>
-                    <select class="form-control role-selector" id="role" name="role">
-                        <option value="student">Student</option>
-                        <option value="mentor">Mentor</option>
-                        <!-- <option value="admin">Admin</option> -->
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email address</label>
-                    <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
-                </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required>
-                </div>
-                <div class="form-group">
-                    <label for="confirm-password">Confirm Password</label>
-                    <input type="password" class="form-control" id="confirm-password" name="confirmPassword" placeholder="Confirm your password" required>
-                </div>
-                <div class="form-group text-center">
-                    <button type="submit" class="btn btn-primary btn-block" id="formSubmit">Signup</button>
-                    <a href="index.php" class="btn btn-secondary btn-block">Back</a>
-                </div>
-            </form>
+    <h2 class="text-center form-title">Sign Up</h2>
+    <div class="alert alert-info text-center"></div>
+    <form id="signupForm" method="POST" action="signup.php">
+        <div class="form-group">
+            <label for="role">I am a:</label>
+            <select class="form-control" id="role" name="role">
+                <option value="student">Student</option>
+                <option value="mentor">Mentor</option>
+            </select>
         </div>
-    </div>
+        <div class="form-group">
+            <label for="email">Email address</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required>
+        </div>
+        <div class="form-group">
+            <label for="confirm-password">Confirm Password</label>
+            <input type="password" class="form-control" id="confirm-password" name="confirmPassword" placeholder="Confirm your password" required>
+        </div>
+        <div class="form-group text-center">
+            <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
+            <a href="index.php" class="btn btn-secondary btn-block">Back</a>
+        </div>
+    </form>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

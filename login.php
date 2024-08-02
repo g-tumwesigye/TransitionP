@@ -1,12 +1,19 @@
 <?php
-// Start the session
 session_start();
 
+// Handle logout request
+if (isset($_GET['action']) && $_GET['action'] == 'logout') {
+    session_unset();
+    session_destroy();
+    header('Location: login.php');
+    exit();
+}
+
 // Database configuration
-$servername = "sql108.infinityfree.com"; // Replace with your server details
-$username = "if0_36973131"; // Replace with your database username
-$password = "9reHr7jPZ59v"; // Replace with your database password
-$dbname = "if0_36973131_trans"; // Your database name
+$servername = "sql108.infinityfreeapp.com";
+$username = "if0_36973131";
+$password = "9reHr7jPZ59v";
+$dbname = "if0_36973131_trans";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -37,6 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['user_id'] = $id;
             $_SESSION['username'] = $username;
             $_SESSION['role'] = $role;
+            $_SESSION['authenticated'] = true; // Set authentication flag
 
             // Redirect user based on role
             if ($role == 'admin') {

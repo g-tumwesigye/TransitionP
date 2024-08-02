@@ -1,3 +1,18 @@
+<?php
+session_start();
+
+// Check if the user is authenticated
+if (!isset($_SESSION['authenticated']) || $_SESSION['authenticated'] !== true) {
+    header('Location: login.php');
+    exit();
+}
+
+// Prevent caching
+header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+header("Cache-Control: post-check=0, pre-check=0", false);
+header("Pragma: no-cache");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -201,19 +216,55 @@
         <div class="col-md-4">
           <div class="card mb-4">
             <div class="card-body">
-              <h5 class="card-title">Career Guidance Program</h5>
-              <p class="card-text">This mentorship program focuses on guiding students. Mentors, who are professionals in diffrent fields, provide advice on career paths, skill development, and job market trends. This program aims to help students navigate their future careers.</p>
-              <p class="card-text"><small class="text-muted">Start Date: September 1, 2024</small></p>
+              <h5 class="card-title">STEM Mentorship Program</h5>
+              <p class="card-text">This program pairs students interested in STEM fields with mentors who are professionals in science, technology, engineering, and mathematics. The goal is to provide guidance, support, and encouragement for students pursuing careers in these fields.</p>
+              <p class="card-text"><small class="text-muted">Start Date: October 1, 2024</small></p>
               <a href="#" class="btn btn-primary">Read More</a>
             </div>
           </div>
         </div>
       </div>
+
+      <h1 class="text-center mb-4 mt-5">Courses</h1>
+      <div class="row">
+        <!-- Course 1 -->
+        <div class="col-md-4">
+          <div class="card mb-4">
+            <div class="card-body">
+              <h5 class="card-title">Introduction to Programming</h5>
+              <p class="card-text">A beginner-friendly course that introduces the basics of programming and coding. It covers fundamental concepts, such as variables, loops, and functions, using an easy-to-understand language.</p>
+              <a href="#" class="btn btn-primary">Enroll</a>
+            </div>
+          </div>
+        </div>
+        <!-- Course 2 -->
+        <div class="col-md-4">
+          <div class="card mb-4">
+            <div class="card-body">
+              <h5 class="card-title">Advanced Data Analysis</h5>
+              <p class="card-text">This course delves into more complex data analysis techniques, including statistical methods and data visualization. It is designed for students with a basic understanding of data analysis who wish to deepen their knowledge.</p>
+              <a href="#" class="btn btn-primary">Enroll</a>
+            </div>
+          </div>
+        </div>
+        <!-- Course 3 -->
+        <div class="col-md-4">
+          <div class="card mb-4">
+            <div class="card-body">
+              <h5 class="card-title">Effective Communication Skills</h5>
+              <p class="card-text">A course aimed at improving students' communication abilities, including public speaking, writing, and interpersonal skills. It provides practical tips and exercises to help students become more effective communicators.</p>
+              <a href="#" class="btn btn-primary">Enroll</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 
+  <!-- JavaScript -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
