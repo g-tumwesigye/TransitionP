@@ -1,14 +1,15 @@
-TransitionPlus
-Project Overview
+# TransitionPlus
+
+## Project Overview
 TransitionPlus is a web-based application designed to support high school students in Rwanda as they transition to higher education. It offers a comprehensive platform for personalized guidance, resource access, mentorship programs, academic support, and career readiness training. The project aims to empower students to make informed decisions, set goals, and achieve academic success.
 
-Mission Statement
+## Mission Statement
 To empower high school students through TransitionPlus, utilizing tech skills to support their successful transition to higher education. By fostering informed decision-making, goal-setting, and academic success, we aim to cultivate productive citizens who contribute to social and economic development, while reducing youth unemployment and preventing engagement in unproductive activities such as crime, drug use, prostitution, and alcohol consumption.
 
-Problem Statement
+## Problem Statement
 High school students in Rwanda face significant challenges when transitioning to higher education, including a lack of guidance, resources, and mentorship. These challenges hinder their ability to make informed decisions, set realistic goals, and succeed academically.
 
-Proposed Solution
+## Proposed Solution
 TransitionPlus addresses these challenges by providing a digital platform that offers personalized guidance, access to educational resources, mentorship opportunities, and academic support. The platform also includes features for career readiness training and community engagement.
 
 Functionalities
@@ -39,7 +40,7 @@ Node.js and npm
 Git
 Steps
 Clone the repository:
-git clone https://github.com/yourusername/TransitionPlus.git
+git clone https://github.com/g-tumwesigye/TransitionP.git
 Navigate to the project directory cd TransitionPlus
 
 
