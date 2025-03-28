@@ -28,7 +28,7 @@ Students
 Mentors
 Administrators
 Educational institutions
-Parents/Guardians
+Parents & Guardians
 Technical Overview
 
 Technologies, tools, and database
